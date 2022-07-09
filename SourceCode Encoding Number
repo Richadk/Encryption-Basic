@@ -1,0 +1,28 @@
+function coder_lua(x)
+if tonumber(x) == nil then
+x=x
+elseif tonumber(x) == x then
+x=x:gsub(".", function(t) 
+if tonumber(t) == nil then
+QQ=x
+elseif tonumber(t) == t then
+x=t
+x=x:gsub(".",function(i)
+g=string.byte(i)
+g=g+2
+return g..","
+end)
+x=x.."0"
+x=x:gsub(",0",'') 
+x=load("return {"..x.."}")() 
+x=string.char(table.unpack(x)) 
+x=x:gsub(".",function(x)
+return string.char(math.random(1,125))..x
+end)
+QQ=x
+end
+return QQ
+end)
+end
+return (x)
+end
